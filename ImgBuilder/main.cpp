@@ -17,13 +17,12 @@ int main(int argc, char* argv[]) {
 	fstream  fin_img;
 	fstream m_sc_bl, m_firmware;
 
-	fs_bl.open("/home/youngbin0313/First_BL/Debug/First_BL.bin", ios_base::binary | ios::in);
-	//fs_bl.open("/home/youngbin0313/projects/ImgBuilder/STM32Ft07_USART.bin", ios_base::binary | ios::in); // for test on STM32F407 board
-	sc_bl.open("/home/youngbin0313/Secure-PX4-Autopilot/build/px4_fmu-v6c_bootloader/px4_fmu-v6c_bootloader.bin", ios_base::binary | ios::in);
-	firmware.open("/home/youngbin0313/Secure-PX4-Autopilot/build/px4_fmu-v6c_default/px4_fmu-v6c_default.bin", ios_base::binary | ios::in);
+	//change the path to your username
+	fs_bl.open("/home/*/First_BL/Debug/First_BL.bin", ios_base::binary | ios::in);
+	sc_bl.open("/home/*/Secure-PX4-Autopilot/build/px4_fmu-v6c_bootloader/px4_fmu-v6c_bootloader.bin", ios_base::binary | ios::in);
+	firmware.open("/home/*/Secure-PX4-Autopilot/build/px4_fmu-v6c_default/px4_fmu-v6c_default.bin", ios_base::binary | ios::in);
 
-	//m_sc_bl.open("/home/youngbin0313/projects/ImgBuilder/m_sc_bl.bin", ios_base::binary | ios::out);
-	fin_img.open("/home/youngbin0313/projects/ImgBuilder/fin_img.bin", ios_base::binary | ios::out);
+	fin_img.open("/home/*/projects/ImgBuilder/fin_img.bin", ios_base::binary | ios::out);
 
 	const uint8_t pub_key[128] = { 0x6F, 0xB7, 0xA5, 0x69, 0xE4, 0x40, 0x36, 0x3D, 0xE4, 0x5D, 0xBD, 0xE5, 0x19, 0xA3, 0x99, 0x28,
 						 0xD9, 0xF4, 0xAC, 0x85, 0x12, 0x1B, 0x75, 0x26, 0x85, 0x1A, 0xDF, 0x1E, 0x62, 0xD4, 0xAE, 0x42,
@@ -277,97 +276,7 @@ int main(int argc, char* argv[]) {
 		printf("System >>> The final image has been created\n");
 	}
 
-
-
-
-
-
-
 	return 0;
-
-
-
-
-
-
-	/* Generate Only Second Bootloader */
-
-	//int key_num = 0x0;
-	//uint8_t plain_data[100];
-	//SHA256_CTX ctx;
-
-	//uint8_t hash[32];
-
-	//int file_size = get_filesize(sc_bl); 
-	//int sc_file_size = file_size; // Second Bootloader file size
-	//int sc_file_version = 2; // Second Bootloader version
-
-	//if (sc_bl.is_open()) {
-
-	//	sha256_init(&ctx);
-
-	//	while (0 < file_size) {
-	//		if (file_size > 100) {
-	//			sc_bl.read((char*)plain_data, 100);
-	//			sha256_update(&ctx, plain_data, 100);
-	//			file_size -= 100;
-	//		}
-	//		else {
-	//			sc_bl.read((char*)plain_data, file_size);
-	//			sha256_update(&ctx, plain_data, file_size);
-	//			break;
-	//		}
-	//	}
-	//	sha256_final(&ctx, hash);
-	//}
-
-	////cout << "hash: ";
-	////for (int i = 0; i < 32; i++) {
-	////	cout << (int)hash[i];
-	////}
-	////cout << '\n';
-
-	//uint8_t RSA_enc_data[128]; // Second Bootloader signature
-	//int RSA_enc_len;
-
-	//if (Encrypt_RSA1024(0, hash, 32, RSA_enc_data, &RSA_enc_len))
-	//	printf("System >>> RSA1024 Encryption Success\n");
-	//else
-	//	printf("System >>> RSA1024 Encryption Failure\n");
-
-
-	//m_sc_bl.write((char*)RSA_enc_data, 128);
-	//m_sc_bl.write((char*)&sc_file_size, 4);
-	//m_sc_bl.write((char*)&sc_file_version, 4);
-	//m_sc_bl.write((char*)pub_key, 128);
-
-
-	//sc_bl.seekg(0, ios_base::beg);
-
-	//long _sc_bl_size = get_filesize(sc_bl);
-
-	//uint8_t sc_data[100];
-
-
-	//while (0 < _sc_bl_size) { // First Bootloader
-	//	if (_sc_bl_size > 100) {
-	//		sc_bl.read((char*)sc_data, 100);
-	//		m_sc_bl.write((char*)sc_data, 100);
-	//		_sc_bl_size -= 100;
-	//	}
-	//	else {
-	//		sc_bl.read((char*)sc_data, _sc_bl_size);
-	//		m_sc_bl.write((char*)sc_data, _sc_bl_size);
-	//		break;
-	//	}
-	//}
-
-	//printf("System >>> Second Bootloader .....Done\n");
-
-
-	//sc_bl.close();
-
-	//m_sc_bl.close();
 
 }
 
