@@ -1,0 +1,5 @@
+../Core/Src/main.cpp:22:6:void Jump_To_Sec_BL()	16	static
+../Core/Src/main.cpp:55:5:int main()	56	static
+../Core/Src/main.cpp:130:6:void SystemClock_Config()	120	static
+../Core/Src/main.cpp:188:13:void MX_GPIO_Init()	16	static
+../Core/Src/main.cpp:210:6:void Error_Handler()	4	static
